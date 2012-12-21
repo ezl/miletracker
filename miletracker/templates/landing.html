@@ -1,0 +1,53 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>jQuery Mobile: Theme Download</title>
+
+        <!-- jQuery Mobile CSS bits -->
+        <link rel="stylesheet" href="themes/miletracker.min.css" />
+        <!-- http://jquerymobile.com/themeroller/?ver=1.2.0&style_id=20121221-52 -->
+        <link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0/jquery.mobile.structure-1.2.0.min.css" />
+        <!-- // Original
+        <link rel="stylesheet"  href="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.css" />
+        -->
+
+        <!-- if you have a custom theme, add it here -->
+        <link rel="stylesheet"  href="themes/jqm-icon-pack-2.0-original.css" />
+        <link rel="stylesheet"  href="themes/style.css" />
+
+        <!-- Javascript includes -->
+        <script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
+        <script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>
+
+        <style>
+        </style>
+    </head>
+
+    <body id="landing">
+        <div data-role="page" data-theme="a">
+            <div data-role="content" data-theme="c">
+                <h1 id="logo"><span id="mile">mile</span><span id="tracker">tracker</span></h1>
+                <div id="actions">
+                    <a href="index.html" data-role="button" data-icon="plus">Start A Trip</a>
+                    <a href="index.html" data-role="button" data-icon="power" data-theme="d">End A Trip</a>
+                </div>
+            </div><!-- content -->
+
+            <div data-role="footer" data-position="fixed" data-theme="b">
+                <div data-role="navbar">
+                    <ul>
+                        <li><a href="#" data-icon="plus">Add</a></li>
+                        <li><a href="#" data-icon="edit">Edit</a></li>
+                        <li><a href="#" data-icon="page">View</a></li>
+                        <li><a href="#" data-icon="gear">Settings</a></li>
+                    </ul>
+                </div><!-- /navbar -->
+            </div><!-- /footer -->
+
+        </div>
+    </body>
+</html>

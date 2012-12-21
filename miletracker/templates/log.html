@@ -1,0 +1,118 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>jQuery Mobile: Theme Download</title>
+
+
+        <!-- jQuery Mobile CSS bits -->
+        <link rel="stylesheet" href="themes/miletracker.min.css" />
+        <!-- http://jquerymobile.com/themeroller/?ver=1.2.0&style_id=20121221-52 -->
+        <link rel="stylesheet" href="themes/jquery.mobile.structure-1.2.0.min.css" />
+        <!-- // Original
+        <link rel="stylesheet"  href="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.css" />
+        -->
+
+        <!-- if you have a custom theme, add it here -->
+        <link rel="stylesheet"  href="themes/jqm-icon-pack-2.0-original.css" />
+        <link rel="stylesheet"  href="themes/font-awesome/jqm-icon-pack-2.1.2-fa.css" />
+        <link rel="stylesheet"  href="themes/style.css" />
+
+        <!-- Javascript includes -->
+        <script src="javascript/jquery-1.8.2.min.js"></script>
+        <script src="javascript/jquery.mobile-1.2.0.min.js"></script>
+
+        <script>
+$("#mylistview").listview({
+  autodividers: true,
+
+  // the selector function is passed a <li> element from the listview;
+  // it should return the appropriate divider text for that <li>
+  // element as a string
+  autodividersSelector: function ( li ) {
+    var out = "cat"; /* generate a string based on the content of li */;
+    console.log(out);
+    return out;
+  }
+});
+
+
+        </script>
+
+        <style>
+            p.helptext {
+              margin-top: 0.2em;
+              margin-bottom: 2.3em;
+              font-size: 0.8em;
+              color: #666;
+            }
+        </style>
+    </head>
+
+    <body id="striped">
+        <div data-role="page" data-theme="a">
+            <div data-role="header" data-theme="b">
+                <h1 id="lgo"><span id="mile">mile</span><span id="tracker">tracker</span></h1>
+            </div>
+
+            <div data-role="content" data-theme="a">
+                <input type="search" name="search" id="search-basic" value="" placeholder="Search for a trip" />
+                <div data-role="navbar">
+                    <ul>
+                        <li><a href="" class="ui-btn-active ui-state-persist">By Date</a></li>
+                        <li><a href="">A - Z</a></li>
+                    </ul>
+                </div><!-- /navbar -->
+
+                <h2>Trip Log</h2>
+                    <ul id="mylistview"
+                        data-role="listview"
+                        >
+                        <li data-icon="pencil"><a href="">2/03 - Real estate showing</a></a></li>
+                        <li data-icon="pencil"><a href="">2/05 - Real estate showing</a></a></li>
+                        <li data-icon="pencil"><a href="">2/08 - Real estate showing</a></a></li>
+                        <li data-icon="pencil"><a href="">2/03 - Drive clients to strip club</a></li>
+                        <li data-icon="pencil"><a href="">2/08 - Real estate showing</a></a></li>
+                        <li data-icon="pencil"><a href="">2/12 - Office Max run</a></a></li>
+                        <li data-icon="pencil"><a href="">2/23 - Real estate showing</a></a></li>
+
+                        <li data-icon="pencil"><a href="">3/03 - Real estate showing</a></a></li>
+                        <li data-icon="pencil"><a href="">3/03 - Drive clients to strip club</a></li>
+                        <li data-icon="pencil"><a href="">3/03 - Real estate showing</a></a></li>
+                        <li data-icon="pencil"><a href="">3/09 - Real estate showing</a></a></li>
+                        <li data-icon="pencil"><a href="">3/11 - Real estate showing</a></a></li>
+                        <li data-icon="pencil"><a href="">3/21 - Office Max run</a></a></li>
+                        <li data-icon="pencil"><a href="">3/29 - Real estate showing</a></a></li>
+
+                        <li data-icon="pencil"><a href="">4/01 - Real estate showing</a></a></li>
+                        <li data-icon="pencil"><a href="">4/06 - Drive clients to strip club</a></li>
+                        <li data-icon="pencil"><a href="">4/09 - Real estate showing</a></a></li>
+                        <li data-icon="pencil"><a href="">5/10 - Real estate showing</a></a></li>
+                        <li data-icon="pencil"><a href="">5/10 - Real estate showing</a></a></li>
+                        <li data-icon="pencil"><a href="">5/29 - Office Max run</a></a></li>
+                        <li data-icon="pencil"><a href="">7/04 - Real estate showing</a></a></li>
+                    </ul>
+
+
+
+                <br><br>
+                <a href="index.html" data-role="button" data-icon="save" data-theme="c">Email</a>
+            </div><!-- content -->
+
+            <div data-role="footer" data-position="fixed" data-theme="b">
+                <div data-role="navbar">
+                    <ul>
+                        <li><a href="#" data-icon="plus">Add</a></li>
+                        <li><a href="#" data-icon="edit">Edit</a></li>
+                        <li><a href="#" data-icon="page">View</a></li>
+                        <li><a href="#" data-icon="gear">Settings</a></li>
+                    </ul>
+                </div><!-- /navbar -->
+            </div><!-- /footer -->
+
+        </div>
+    </body>
+</html>

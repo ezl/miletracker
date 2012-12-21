@@ -1,0 +1,51 @@
+/* Generic Use */
+body#landing {
+    background: url(../images/road2.jpg) !important;
+    background-repeat:no-repeat !important;
+    background-position:center center !important;
+    background-attachment:scroll;
+    background-size:100% 100%;
+}
+body#striped {
+    background: rgb(197,204,211) url(../images/stripes.png) !important;
+    font-family: Helvetica;
+    margin: 0 0 0 10px;
+    padding: 0;
+    -webkit-user-select: none;
+    -webkit-text-size-adjust: none;
+}
+.ui-page {
+    background: transparent;
+}
+.ui-content{
+    background: transparent;
+}
+
+span#mile { color: white; }
+span#tracker { color: red; }
+
+/* Landing Page Positioning */
+h1#logo, #actions {
+    position:absolute;
+    width: 320px;
+    left:50%;
+    margin-left:-160px;
+    text-align: center;
+}
+h1#logo {
+    top: 30%;
+    font-size:3em;
+}
+
+#actions {
+  top: 60%;
+}
+
+input[type="number"] {
+    color: blue;
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+    /* display: none; <- Crashes Chrome on hover */
+    -webkit-appearance: none;
+    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
