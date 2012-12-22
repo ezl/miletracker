@@ -1,7 +1,20 @@
 {% extends "base.html" %}
 
+{% block extra_css %}
+        <style>
+            p.helptext {
+              margin-top: 0.2em;
+              margin-bottom: 2.3em;
+              font-size: 0.8em;
+              color: #666;
+            }
+        </style>
+    </head>
+{% endblock %}
+
 {% block content%}
             <div data-role="content" data-theme="a">
+                {% comment %}
                 <div data-role="navbar">
                     <ul>
                         <li><a href="" class="ui-btn-active ui-state-persist">Use Odometer</a></li>
@@ -10,19 +23,17 @@
                 </div><!-- /navbar -->
 
                 <p>You can either enter beginning and ending odometer readings <strong><em>or</em></strong> just enter the total miles traveled.</p>
+                {% endcomment %}
 
-                <input type="date" name="name" id="basic" value="" data-mini="true" placeholder="Date of trip" />
-                <p class="helptext">Defaults to today's date.</p>
-
-                <input type="tel" name="name" id="basic" value="" data-mini="true" placeholder="Beginning odometer reading" />
-                <p class="helptext">Hint: You can just use the last 4 digits of the odometer when you start the trip.</p>
-
-                <input type="tel" name="name" id="basic" value="" data-mini="true" placeholder="Ending odometer reading"/>
-                <p class="helptext">If you're just getting started, you can fill this in later, when the trip actually ends.</p>
-
-                <input type="tel" name="name" id="basic" value="" data-mini="true" placeholder="Reason for trip (optional)"/>
-                <p class="helptext">Optional -- you can also fill it in later, if you like.</p>
-
+                <form>
+                {% for field in form %}
+                    {{ field }}
+                    <p class="helptext">{{ field.help_text}}</p>
+                {% endfor %}
                 <a href="index.html" data-role="button" data-icon="save" data-theme="c">Save This Trip!</a>
+                </form>
+
+
+
             </div><!-- content -->
 {% endblock %}

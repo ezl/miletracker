@@ -26,8 +26,10 @@ SECRET_KEY = 'x6-n$%9nmubea&amp;-#vjky9m1#9-vfik9qs@3(sr=t@3f$y8__r$'
 
 INSTALLED_APPS = (
     # 'miletracker.apps.',
+    'main',
 
     #'south',
+    'django_extensions',
 
     'django.contrib.auth',
     'django.contrib.contenttypes',
