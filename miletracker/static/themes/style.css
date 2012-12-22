@@ -2,6 +2,9 @@
 .right {
     float: right;
 }
+h1 a {
+    text-decoration: none;
+}
 body#landing {
     background: url(../images/road2.jpg) !important;
     background-repeat:no-repeat !important;
