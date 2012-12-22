@@ -5,20 +5,21 @@
 h1 a {
     text-decoration: none;
 }
-body#landing {
+body {
+    font-family: Helvetica;
+    padding: 0;
+    -webkit-user-select: none;
+    -webkit-text-size-adjust: none;
+}
+#landing {
     background: url(../images/road2.jpg) !important;
     background-repeat:no-repeat !important;
     background-position:center center !important;
     background-attachment:scroll;
     background-size:100% 100%;
 }
-body#striped {
+#striped {
     background: rgb(197,204,211) url(../images/stripes.png) !important;
-    font-family: Helvetica;
-    margin: 0 0 0 10px;
-    padding: 0;
-    -webkit-user-select: none;
-    -webkit-text-size-adjust: none;
 }
 .ui-page {
     background: transparent;

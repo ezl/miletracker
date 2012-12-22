@@ -27,12 +27,14 @@
         {% endblock %}
 
         {% block extra_javascript %}
+        <script>
+        </script>
         {% endblock %}
     </head>
 
-    <body id="{% block body_id %}striped{% endblock %}">
+    <body>
 
-        <div data-role="page" data-theme="a">
+        <div data-role="page" data-theme="a" id="{% block body_id %}striped{% endblock %}">
             {% block header %}
             <div data-role="header" data-theme="b">
                 <h1><a href="{% url landing %}"><span id="mile">mile</span><span id="tracker">tracker</span></a></h1>
