@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div data-role="content" data-theme="a">
+    <h2>Where should we send it?</h2>
+    <form>
+        <input id="email" placeholder="null@example.com">
+        <p class="helptext ">Email address to mail report to</p>
+
+        <a id="submit" data-role="button" data-icon="share-alt" data-theme="c">Send!</a>
+        <script>
+            $('a#submit').click(function (e) {
+                $(this).parent().submit();
+                e.preventDefault();
+            });
+        </script>
+    </form>
+</div><!-- content -->
+{% endblock %}
+
+{% block header_content %}
+<h1>Email Your Trip Log</h1>
+{% endblock %}
+
+{% block footer %}
+{% endblock %}

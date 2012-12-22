@@ -55,3 +55,8 @@ def log(request, template_name="log.html"):
         )
     return render_to_response(
         template_name, RequestContext(request, ctx))
+
+def email(request, template_name="email.html"):
+    ctx = dict()
+    return render_to_response(
+        template_name, RequestContext(request, ctx))

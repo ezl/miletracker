@@ -30,6 +30,10 @@ urlpatterns = patterns('',
     url(r'^log/$',
         'main.views.log',
         name='log'),
+
+    url(r'^email/$',
+        'main.views.email',
+        name='email'),
 )
 
 if settings.DEBUG and settings.STATIC_ROOT:

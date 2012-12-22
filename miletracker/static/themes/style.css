@@ -12,14 +12,14 @@ body {
     -webkit-text-size-adjust: none;
 }
 #landing {
-    background: url(../images/road2.jpg) !important;
-    background-repeat:no-repeat !important;
-    background-position:center center !important;
+    background: url(../images/road2.jpg);
+    background-repeat:no-repeat;
+    background-position:center center;
     background-attachment:scroll;
     background-size:100% 100%;
 }
 #striped {
-    background: rgb(197,204,211) url(../images/stripes.png) !important;
+    background: rgb(197,204,211) url(../images/stripes.png);
 }
 .ui-page {
     background: transparent;

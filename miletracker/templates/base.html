@@ -8,13 +8,16 @@
 
         <!-- jQuery Mobile CSS bits -->
         <link rel="stylesheet" href="{{ STATIC_URL }}themes/miletracker.min.css" />
-        <!-- http://jquerymobile.com/themeroller/?ver=1.2.0&style_id=20121221-52 -->
+        <!--
+            http://jquerymobile.com/themeroller/?ver=1.2.0&style_id=20121222-22
+        -->
         <link rel="stylesheet" href="{{ STATIC_URL }}themes/jquery.mobile.structure-1.2.0.min.css" />
         <!-- // Original
         <link rel="stylesheet"  href="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.css" />
         -->
 
         <!-- if you have a custom theme, add it here -->
+        <!-- https://github.com/commadelimited/jQuery-Mobile-Icon-Pack -->
         <link rel="stylesheet"  href="{{ STATIC_URL }}themes/jqm-icon-pack-2.0-original.css" />
         <link rel="stylesheet"  href="{{ STATIC_URL }}themes/font-awesome/jqm-icon-pack-2.1.2-fa.css" />
         <link rel="stylesheet"  href="{{ STATIC_URL }}themes/style.css" />
@@ -33,11 +36,12 @@
     </head>
 
     <body>
-
-        <div data-role="page" data-theme="a" id="{% block body_id %}striped{% endblock %}">
+        <div data-role="page" data-theme="a" id="{% block body_id %}striped{% endblock %}" data-overlay-theme="a">
             {% block header %}
             <div data-role="header" data-theme="b">
+                {% block header_content %}
                 <h1><a href="{% url landing %}"><span id="mile">mile</span><span id="tracker">tracker</span></a></h1>
+                {% endblock %}
             </div>
             {% endblock %}
 
@@ -47,7 +51,9 @@
             </div><!-- content -->
             {% endblock %}
 
+            {% block footer %}
             {% include "_footer.html" %}
+            {% endblock %}
         </div>
     </body>
 </html>
