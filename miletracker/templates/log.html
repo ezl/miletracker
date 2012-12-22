@@ -16,7 +16,7 @@
                         data-role="listview"
                         >
                         {% for trip in trips %}
-                        <li data-icon="pencil"><a href="">{{ trip.date}} - {% firstof trip.reason "(no description)"%}</a><span class="ui-li-count">{{ trip.distance }} mi</span></li>
+                        <li data-icon="pencil"><a href="{% url edit trip.id %}">{{ trip.date}} - {% firstof trip.reason "(no description)"%}</a><span class="ui-li-count">{{ trip.distance }} mi</span></li>
                         {% endfor %}
 
                         <li data-icon="pencil"><a href="">Nov 03 - Real estate showing</a><span class="ui-li-count">2.4 mi</span></li>
