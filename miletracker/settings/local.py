@@ -19,7 +19,7 @@ MANAGERS = ADMINS
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(VAR_ROOT, 'dev.db.miletracker.sqlite3'),
+        'NAME': os.path.join(PROJECT_DIR, 'dev.db.miletracker.sqlite3'),
     }
 }
 
