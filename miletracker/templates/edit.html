@@ -9,6 +9,11 @@
                 color: #666;
             }
 
+            div.error {
+                border: 1px solid #C41212;
+                background: #E08787;
+                padding: 15px;
+            }
             div.error > input {
                 border: 1px solid #C41212;
                 -webkit-box-shadow:0 0 6px #C41212;
@@ -17,6 +22,7 @@
             }
             p.error {
                 color: #C41212;
+                text-shadow: 0 1px 0 #aaa;
             }
             p.error:not(.helptext) {
                 margin-bottom: 0.25em;
@@ -44,6 +50,14 @@
                 {% endcomment %}
 
                 <form method="POST">{% csrf_token %}
+                    {% if form.non_field_errors %}
+                    <div class="error">
+                        {% for error in form.non_field_errors %}
+                            <p class="error">{{ error }}</p>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+
                     {% for field in form %}
                     <div {% if field.errors %}class="error"{% endif %}>
                         {% if field.errors %}

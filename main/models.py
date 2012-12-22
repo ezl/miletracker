@@ -1,6 +1,7 @@
 from django.db import models
 from django_extensions.db.models import TimeStampedModel
 from django.core.urlresolvers import reverse
+from django.core.exceptions import ValidationError
 
 # Create your models here.
 
@@ -23,6 +24,11 @@ class Trip(TimeStampedModel):
         start = self.odometer_start or 0
         end = self.odometer_end or 0
         return abs(end - start)
+
+    def clean(self):
+        if not self.odometer_start and not self.odometer_end:
+            raise ValidationError('Oops, you have to fill out EITHER '
+                                  'the odometer starting or ending values')
 
     def get_absolute_url(self):
         return reverse("edit", args=[self.id])
