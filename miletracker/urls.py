@@ -21,7 +21,7 @@ urlpatterns = patterns('',
 
     url(r'^add/$',
         'main.views.edit',
-         name='edit'),
+         name='add'),
 
     url(r'^edit/(?P<trip_id>[-\w]+)/$',
         'main.views.edit',

@@ -4,14 +4,16 @@
             <div data-role="content" data-theme="a">
                 <input type="search" name="search" id="search-basic" value="" placeholder="Search for a trip (this doesn't work yet)" />
 
+{% comment %}
                 <div data-role="navbar">
                     <ul>
                         <li><a href="" class="ui-btn-active ui-state-persist">By Date</a></li>
                         <li><a href="">A - Z</a></li>
                     </ul>
                 </div><!-- /navbar -->
+{% endcomment %}
 
-                <h2>Trip Log<span class="right">234 mi</span></h2>
+                <h2>Trip Log<span class="right">74.2 mi</span></h2>
                     <ul id="mylistview"
                         data-role="listview"
                         >
@@ -27,9 +29,7 @@
                         <li data-icon="pencil"><a href="">May 23 - Real estate showing</a><span class="ui-li-count">21.2 mi</span></li>
                     </ul>
 
-
-
                 <br><br>
-                <a href="index.html" data-role="button" data-icon="save" data-theme="c">Email</a>
+                <a href="{% url add %}" data-rel="dialog" data-role="button" data-icon="save" data-theme="c">Email</a>
             </div><!-- content -->
 {% endblock %}

@@ -1,7 +1,7 @@
             <div data-role="footer" data-position="fixed" data-theme="b">
                 <div data-role="navbar">
                     <ul>
-                        <li><a href="{% url edit %}" data-icon="plus" {% if tab == "edit" %}class="ui-btn-active ui-state-persist"{% endif %}>New Trip</a></li>
+                        <li><a href="{% url add %}" data-icon="plus" {% if tab == "edit" %}class="ui-btn-active ui-state-persist"{% endif %}>New Trip</a></li>
                         <li><a href="{% url log %}" data-icon="page" {% if tab == "log" %}class="ui-btn-active ui-state-persist"{% endif %}>View Trips</a></li>
                         <li><a href="{% url landing %}" data-icon="wrench" {% if tab == "settings" %}class="ui-btn-active ui-state-persist"{% endif %}>Settings</a></li>
                     </ul>
