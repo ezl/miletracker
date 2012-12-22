@@ -1,4 +1,7 @@
 /* Generic Use */
+.right {
+    float: right;
+}
 body#landing {
     background: url(../images/road2.jpg) !important;
     background-repeat:no-repeat !important;

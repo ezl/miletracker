@@ -12,10 +12,13 @@ TEMPLATE_DEBUG = DEBUG
 SITE_ID = 1
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
+
 TIME_ZONE = 'UTC'
 USE_TZ = True
 USE_I18N = True
-USE_L10N = True
+USE_L10N = False
+DATE_FORMAT = "M j"
+# DATETIME_FORMAT = 'M j, P'
 LANGUAGE_CODE = 'en'
 LANGUAGES = (
     ('en', 'English'),

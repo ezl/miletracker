@@ -3,6 +3,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render_to_response, get_object_or_404
 from django.conf import settings
 from django.template import RequestContext
+from models import Trip
 from forms import TripForm
 from django.contrib import messages
 from django.core.urlresolvers import reverse
@@ -35,6 +36,10 @@ def edit(request, template_name="edit.html"):
         template_name, RequestContext(request, ctx))
 
 def log(request, template_name="log.html"):
-    ctx = dict(tab="log")
+    trips = Trip.objects.all()
+    ctx = dict(
+        tab="log",
+        trips=trips,
+        )
     return render_to_response(
         template_name, RequestContext(request, ctx))

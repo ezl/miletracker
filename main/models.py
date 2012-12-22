@@ -28,3 +28,6 @@ class Trip(TimeStampedModel):
 
     def __unicode__(self):
         return "%s: %s : %s" % ("User", self.date, self.distance())
+
+    class Meta:
+        ordering = ['-date']
