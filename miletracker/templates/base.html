@@ -33,6 +33,12 @@
     <body id="{% block body_id %}striped{% endblock %}">
 
         <div data-role="page" data-theme="a">
+            {% block header %}
+            <div data-role="header" data-theme="b">
+                <h1 id="lgo"><span id="mile">mile</span><span id="tracker">tracker</span></h1>
+            </div>
+            {% endblock %}
+
             {% block content %}
             <div data-role="content" data-theme="c">
                 Content block
