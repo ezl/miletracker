@@ -14,7 +14,11 @@
 
 {% block content%}
             <div data-role="content" data-theme="a">
-                <h2>Add A New Trip</h2>
+                {% if trip %}
+                    <h2>Edit Trip</h2>
+                {% else %}
+                    <h2>Add A New Trip</h2>
+                {% endif %}
                 {% comment %}
                 <div data-role="navbar">
                     <ul>
@@ -39,8 +43,5 @@
                         });
                     </script>
                 </form>
-
-
-
             </div><!-- content -->
 {% endblock %}

@@ -1,5 +1,6 @@
 import datetime
 from django.http import HttpResponse, HttpResponseRedirect
+from django.http import Http404
 from django.shortcuts import render_to_response, get_object_or_404
 from django.conf import settings
 from django.template import RequestContext
@@ -14,9 +15,19 @@ def settings(request, template_name="settings.html"):
     return render_to_response(
         template_name, RequestContext(request, ctx))
 
-def edit(request, template_name="edit.html"):
+def edit(request, trip_id=None, template_name="edit.html"):
+    trip = None
+    if trip_id:
+        try:
+            trip = Trip.objects.get(id=trip_id)
+        except Trip.DoesNotExist:
+            raise Http404
+
     if request.method == "GET":
-        form = TripForm(initial={'date': datetime.datetime.now().date()})
+        if trip:
+            form = TripForm(instance=trip)
+        else:
+            form = TripForm(initial={'date': datetime.datetime.now().date()})
 
     if request.method == "POST":
         form = TripForm(request.POST)
@@ -28,6 +39,7 @@ def edit(request, template_name="edit.html"):
             messages.error(request, u"Uh oh... Error!")
 
     ctx = dict(
+        trip=trip,
         tab="edit",
         form=form,
         )

@@ -1,5 +1,6 @@
 from django.db import models
 from django_extensions.db.models import TimeStampedModel
+from django.core.urlresolvers import reverse
 
 # Create your models here.
 
@@ -23,8 +24,8 @@ class Trip(TimeStampedModel):
         end = self.odometer_end or 0
         return abs(end - start)
 
-    # def get_absolute_url(self):
-    #     return reverse("view_rental", args=[self.slug])
+    def get_absolute_url(self):
+        return reverse("edit", args=[self.id])
 
     def __unicode__(self):
         return "%s: %s : %s" % ("User", self.date, self.distance())

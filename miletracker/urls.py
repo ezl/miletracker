@@ -19,7 +19,11 @@ urlpatterns = patterns('',
             'extra_context': {},
         }, name='landing'),
 
-    url(r'^edit/$',
+    url(r'^add/$',
+        'main.views.edit',
+         name='edit'),
+
+    url(r'^edit/(?P<trip_id>[-\w]+)/$',
         'main.views.edit',
          name='edit'),
 
