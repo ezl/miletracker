@@ -12,11 +12,17 @@ urlpatterns = patterns('',
    # (r'', include('miletracker.apps.')),
     (r'^admin/doc/', include('django.contrib.admindocs.urls')),
     (r'^admin/', include(admin.site.urls)),
+
     url(r'^$',
         direct_to_template, {
             'template': 'landing.html',
-            'extra_context': {
-            }
+            'extra_context': {},
+        }, name='landing'),
+
+    url(r'^edit/$',
+        direct_to_template, {
+            'template': 'edit.html',
+            'extra_context': {},
         }, name='landing'),
 )
 
