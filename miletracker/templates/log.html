@@ -1,47 +1,6 @@
+{% extends "base.html" %}
 
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-
-        <title>jQuery Mobile: Theme Download</title>
-
-
-        <!-- jQuery Mobile CSS bits -->
-        <link rel="stylesheet" href="themes/miletracker.min.css" />
-        <!-- http://jquerymobile.com/themeroller/?ver=1.2.0&style_id=20121221-52 -->
-        <link rel="stylesheet" href="themes/jquery.mobile.structure-1.2.0.min.css" />
-        <!-- // Original
-        <link rel="stylesheet"  href="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.css" />
-        -->
-
-        <!-- if you have a custom theme, add it here -->
-        <link rel="stylesheet"  href="themes/jqm-icon-pack-2.0-original.css" />
-        <link rel="stylesheet"  href="themes/font-awesome/jqm-icon-pack-2.1.2-fa.css" />
-        <link rel="stylesheet"  href="themes/style.css" />
-
-        <!-- Javascript includes -->
-        <script src="javascript/jquery-1.8.2.min.js"></script>
-        <script src="javascript/jquery.mobile-1.2.0.min.js"></script>
-
-        <script>
-$("#mylistview").listview({
-  autodividers: true,
-
-  // the selector function is passed a <li> element from the listview;
-  // it should return the appropriate divider text for that <li>
-  // element as a string
-  autodividersSelector: function ( li ) {
-    var out = "cat"; /* generate a string based on the content of li */;
-    console.log(out);
-    return out;
-  }
-});
-
-
-        </script>
-
+{% block extra_css %}
         <style>
             p.helptext {
               margin-top: 0.2em;
@@ -51,13 +10,9 @@ $("#mylistview").listview({
             }
         </style>
     </head>
+{% endblock %}
 
-    <body id="striped">
-        <div data-role="page" data-theme="a">
-            <div data-role="header" data-theme="b">
-                <h1 id="lgo"><span id="mile">mile</span><span id="tracker">tracker</span></h1>
-            </div>
-
+{% block content %}
             <div data-role="content" data-theme="a">
                 <input type="search" name="search" id="search-basic" value="" placeholder="Search for a trip" />
                 <div data-role="navbar">
@@ -101,18 +56,4 @@ $("#mylistview").listview({
                 <br><br>
                 <a href="index.html" data-role="button" data-icon="save" data-theme="c">Email</a>
             </div><!-- content -->
-
-            <div data-role="footer" data-position="fixed" data-theme="b">
-                <div data-role="navbar">
-                    <ul>
-                        <li><a href="#" data-icon="plus">Add</a></li>
-                        <li><a href="#" data-icon="edit">Edit</a></li>
-                        <li><a href="#" data-icon="page">View</a></li>
-                        <li><a href="#" data-icon="gear">Settings</a></li>
-                    </ul>
-                </div><!-- /navbar -->
-            </div><!-- /footer -->
-
-        </div>
-    </body>
-</html>
+{% endblock %}
