@@ -3,10 +3,23 @@
 {% block extra_css %}
         <style>
             p.helptext {
-              margin-top: 0.2em;
-              margin-bottom: 2.3em;
-              font-size: 0.8em;
-              color: #666;
+                margin-top: 0.2em;
+                margin-bottom: 2.3em;
+                font-size: 0.8em;
+                color: #666;
+            }
+
+            div.error > input {
+                border: 1px solid #C41212;
+                -webkit-box-shadow:0 0 6px #C41212;
+                -moz-box-shadow:0 0 5px #C41212;
+                box-shadow:0 0 5px #C41212;
+            }
+            p.error {
+                color: #C41212;
+            }
+            p.error:not(.helptext) {
+                margin-bottom: 0.25em;
             }
         </style>
     </head>
@@ -32,8 +45,13 @@
 
                 <form method="POST">{% csrf_token %}
                     {% for field in form %}
+                    <div {% if field.errors %}class="error"{% endif %}>
+                        {% if field.errors %}
+                            <p class="error" style="display:block">{{ field.errors.0 }}</p>
+                        {% endif %}
                         {{ field }}
-                        <p class="helptext">{{ field.help_text}}</p>
+                        <p class="helptext {% if field.errors %}error{% endif %}">{{ field.help_text}}</p>
+                    </div>
                     {% endfor %}
                     <a id="submit" data-role="button" data-icon="save" data-theme="c">Save This Trip!</a>
                     <script>
