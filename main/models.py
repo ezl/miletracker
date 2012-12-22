@@ -27,4 +27,4 @@ class Trip(TimeStampedModel):
     #     return reverse("view_rental", args=[self.slug])
 
     def __unicode__(self):
-        return "hi"
+        return "%s: %s : %s" % ("User", self.date, self.distance())
