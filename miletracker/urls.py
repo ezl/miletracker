@@ -20,16 +20,12 @@ urlpatterns = patterns('',
         }, name='landing'),
 
     url(r'^edit/$',
-        direct_to_template, {
-            'template': 'edit.html',
-            'extra_context': {},
-        }, name='edit'),
+        'main.views.edit',
+         name='edit'),
 
     url(r'^log/$',
-        direct_to_template, {
-            'template': 'log.html',
-            'extra_context': {},
-        }, name='log'),
+        'main.views.log',
+        name='log'),
 )
 
 if settings.DEBUG and settings.STATIC_ROOT:
