@@ -45,6 +45,14 @@
             </div>
             {% endblock %}
 
+            {% block messages%}
+                <div class="messages" data-role="content">
+                {% for message in messages %}
+                    <p class="{{ message.tags }}">{{ message|safe }}</p>
+                {% endfor %}
+                </div>
+            {% endblock %}
+
             {% block content %}
             <div data-role="content" data-theme="c">
                 Content block
