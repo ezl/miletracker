@@ -38,11 +38,11 @@
     <body>
         <div data-role="page" data-theme="a" id="{% block body_id %}striped{% endblock %}">
             {% block header %}
-            <div data-role="header" data-theme="b">
-                {% block header_content %}
-                <h1><a href="{% url landing %}"><span id="mile">mile</span><span id="tracker">tracker</span></a></h1>
-                {% endblock %}
-            </div>
+                <div data-role="header" data-theme="b">
+                    {% block header_content %}
+                    <h1><a href="{% url landing %}"><span id="mile">mile</span><span id="tracker">tracker</span></a></h1>
+                    {% endblock %}
+                </div>
             {% endblock %}
 
             {% block messages %}
@@ -56,13 +56,13 @@
             {% endblock %}
 
             {% block content %}
-            <div data-role="content" data-theme="c">
-                Content block
-            </div><!-- content -->
+                <div data-role="content" data-theme="c">
+                    Content block
+                </div><!-- content -->
             {% endblock %}
 
             {% block footer %}
-            {% include "_footer.html" %}
+                {% include "_footer.html" %}
             {% endblock %}
         </div>
     </body>
