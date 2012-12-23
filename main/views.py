@@ -60,6 +60,8 @@ def email(request, template_name="email.html"):
     ctx = dict()
     if request.method == "POST":
         print request.POST
+        email = request.POST.get("email", "your mom")
+        messages.info(request, "sent an email to: %s" % email)
         return HttpResponseRedirect(reverse("log"))
 
     return render_to_response(
