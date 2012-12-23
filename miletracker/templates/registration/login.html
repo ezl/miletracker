@@ -29,6 +29,25 @@
             margin-top: 3px;
             margin-left: 0px;
         }
+
+
+
+
+
+#w1progressIndicator {
+width: 13px;
+height: 15px;
+background-image: url('http://launchrock.com/img/ui/saving.gif');
+position: absolute;
+right: 20px;
+top: 19px;
+display: none;
+}
+
+
+
+
+
     </style>
 
     <form action="" method="post" id="login-box">{% csrf_token %}
@@ -36,7 +55,7 @@
 
             <div class="emailEntry ui-grid-a">
                     <div class="ui-block-a" style="width:75%">
-                        <input type="email" data-theme="a" class="leftRound" data-mini="true" placeholder="name@email.com">
+                        <input name="email" type="email" data-theme="a" class="leftRound" data-mini="true" placeholder="name@email.com">
                     </div>
                     <div class="ui-block-b" style="width:25%">
                         <input id="emailSubmit" type="submit" class="rightRound" value="Go!" data-mini="true">
@@ -45,40 +64,47 @@
 
             <div class="passwordEntry ui-grid-a">
                     <div class="ui-block-a" style="width:75%">
-                        <input type="password" data-theme="a" class="leftRound" data-mini="true" placeholder="enter password">
+                        <input name="password" type="password" data-theme="a" class="leftRound" data-mini="true" placeholder="enter password">
                     </div>
                     <div class="ui-block-b" style="width:25%">
                         <input id="passwordSubmit" type="submit" class="rightRound" value="Go!" data-mini="true">
                     </div>
             </div>
+            <div class="spinner" style="display:none; margin-top: 1em;">
+                <img src="{{ STATIC_URL }}images/saving.gif" style="margin-bottom:-0.5em;">
+                <h3 class="white">Logging in...</h3>
+            </div>
 
         </div><!-- widget container -->
     </form>
+
+    <br>
 
     <div class="emailEntry">
         <p class="helptext white">Enter your email to Join or Log in.</p><br />
     </div>
 
     <div class="passwordEntry">
-        <p class="helptext white">Forgot password?<br />Not me. Enter email Again</p>
+        <p class="helptext white" style="margin-bottom: 0.5px;"><a>Forgot password?</a></p>
+        <p class="helptext white">Not me. <a>Enter email again.</a></p>
     </div>
 
     <script>
+        $('.passwordEntry').hide();
 
-        $('.emailEntry').hide();
         $('#emailSubmit').click(function(event) {
             $('.emailEntry').hide();
             $('.passwordEntry').show();
             $('.widgetContainer').effect("shake", { times:2, distance: 10, direction:"down" }, 500);
+            console.log("submit form");
             event.preventDefault;
             return false;
         });
         $('#passwordSubmit').click(function(event) {
             $('.passwordEntry').hide();
-            $('.emailEntry').show();
-            $('.widgetContainer').effect("shake", { times:2, distance: 10, direction:"down" }, 500);
-            event.preventDefault;
-            return false;
+            // $('.emailEntry').show();
+            $('.spinner').fadeIn();
+            // $('.widgetContainer').effect("shake", { times:2, distance: 10, direction:"down" }, 500);
         });
     </script>
 {% endblock %}
