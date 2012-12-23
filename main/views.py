@@ -58,5 +58,9 @@ def log(request, template_name="log.html"):
 
 def email(request, template_name="email.html"):
     ctx = dict()
+    if request.method == "POST":
+        print request.POST
+        return HttpResponseRedirect(reverse("log"))
+
     return render_to_response(
         template_name, RequestContext(request, ctx))
