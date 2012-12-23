@@ -30,7 +30,7 @@ def edit(request, trip_id=None, template_name="edit.html"):
             form = TripForm(initial={'date': datetime.datetime.now().date()})
 
     if request.method == "POST":
-        form = TripForm(request.POST)
+        form = TripForm(request.POST, instance=trip)
         if form.is_valid():
             form.save()
             messages.success(request, u"Saved!")
