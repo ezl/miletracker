@@ -12,6 +12,7 @@ urlpatterns = patterns('',
    # (r'', include('miletracker.apps.')),
     (r'^admin/doc/', include('django.contrib.admindocs.urls')),
     (r'^admin/', include(admin.site.urls)),
+    (r'^accounts/', include('accounts.urls')),
 
     url(r'^$',
         direct_to_template, {

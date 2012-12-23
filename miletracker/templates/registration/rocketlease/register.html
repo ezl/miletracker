@@ -1,0 +1,165 @@
+{% extends "base.html" %}
+{% load lazysignup_tags %}
+
+{% block css %}
+    <style type="text/css">
+        input[name=email] { display: none; }
+    </style>
+{% endblock %}
+
+{% block javascript %}
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("#signup-box input").not("[type=hidden]").first().focus();
+
+        // Replace the normal radio input with our fancy radio input
+        $(".field_default_view").hide();
+        $("#replacement_default_view").show();
+
+        // Pre-select the correct fancy radio choice based on the selected hidden radio choice
+            var idx = $('.field_default_view :radio:checked').index('.field_default_view :radio')
+            var target = $('.field_default_view :radio')[idx];
+            $($('.fancyradio .choice')[idx]).addClass("selected"); // TODO: WHY? I don't understand why i can't do $(selector)[2].addClass(x) .  seems like the individual elements returned by the initial jquery selector are not jquery objects?
+            var nsdaklf = $('.fancyradio .label')[idx];
+            $(nsdaklf).addClass("selected");
+
+        // Bind click event to fancy radio choices
+        $(".fancyradio .choice").click(function() {
+            // Set the button
+            $(this).siblings().removeClass("selected");
+            $(this).addClass("selected");
+            var idx = $(this).index();
+            var target = $('.field_default_view :radio')[idx];
+            $(target).attr("checked", true);
+
+            // Set the label
+            var nsdaklf = $('.fancyradio .label')[idx];
+            $(nsdaklf).siblings().removeClass("selected");
+            $(nsdaklf).addClass("selected");
+
+            // Set the header
+            $("#role-label").html(target.value);
+        });
+    });
+</script>
+{% endblock %}
+
+{% block global_messages %}{% endblock %}
+{% block body_attrs %}id="signup"{% endblock %}
+
+{% block content %}
+    <section id="signup-wrap" class="section-wrap group">
+        <div class="contents">
+            <hgroup class="group">
+                <h4>Create an Account</h4>
+                <h6>Get started with online rental applications in minutes!</h6>
+            </hgroup>
+            <form id="signup-box" method="post">{% csrf_token %}
+                {# This is a fake field to confuse spammers, reference: ticket #483 #}
+                <input type="text" name="email" value=""/>
+                <div class="signup-badge-clip"></div>
+                <div class="tag-hole"></div>
+                <div class="signup">
+                    <ul>
+                        <li>
+                            {{ form.username.label_tag }} {{ form.username }}
+                            <i class="icon-envelope-alt"></i>
+                            {% if form.username.errors %}
+                                <p class="error" style="display:block;">{{ form.username.errors.0 }}</p>
+                            {% endif %}
+                        </li>
+                        <li>
+                            {{ form.password1.label_tag }} {{ form.password1 }}
+                            <i class="icon-key"></i>
+                            {% if form.password1.errors %}
+                                <p class="error" style="display:block;">{{ form.password1.errors.0 }}</p>
+                            {% endif %}
+                        </li>
+                        <li>
+                            {{ form.password2.label_tag }} {{ form.password2 }}
+                            <i class="icon-key"></i>
+                            {% if form.password2.errors %}
+                                <p class="error" style="display:block;">{{ form.password2.errors.0 }}</p>
+                            {% endif %}
+                        </li>
+                        <li class="account-type">
+                            <label>Which best describes you?</label>
+                            {% if form.default_view.errors %}
+                                <p class="error" style="display:block;">{{ form.default_view.errors.0 }}</p>
+                            {% endif %}
+                            <ul class="account-type-list">
+                                <li class="at-applicant">
+                                    <a class="btn silver-btn" href="#"><input type="radio" name="default_view" id="account-type-applicant" value="Applicant" {% if form.default_view.value == "Applicant" %}checked="checked"{% endif %}> Applicant</a>
+                                    <div class="at-photo">
+                                        <div class="applicant"></div>
+                                    </div>
+                                </li>
+                                <li class="at-landlord">
+                                    <a class="btn silver-btn" href="#"><input type="radio" name="default_view" id="account-type-landlord" value="Landlord" {% if form.default_view.value == "Landlord" %}checked="checked"{% endif %}> Landlord</a>
+                                    <div class="at-photo">
+                                        <div class="landlord"></div>
+                                    </div>
+                                </li>
+                                <li class="at-broker">
+                                    <a class="btn silver-btn" href="#"><input type="radio" name="default_view" id="account-type-broker" value="Broker" {% if form.default_view.value == "Broker" %}checked="checked"{% endif %}> Broker</a>
+                                    <div class="at-photo">
+                                        <div class="broker"></div>
+                                    </div>
+                                </li>
+                                <li class="at-agency">
+                                    <a class="btn silver-btn" href="#"><input type="radio" name="default_view" id="account-type-agency" value="Agency" {% if form.default_view.value == "Agency" %}checked="checked"{% endif %}> Agency</a>
+                                    <div class="at-photo">
+                                        <div class="agency"></div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <p class="error">This is an error, mhm.</p>
+                    <div class="signup-btn">
+                        <input type="submit" class="btn red-btn" href="#" value="Sign Me Up Now!">
+                    </div>
+                </div> <!-- end .signup -->
+            </form> <!-- end #signup-box -->
+            <div class="register">
+                <p>Already have an account? Go ahead and <a href="{% url login %}">sign in</a>.</p>
+            </div>
+        </div> <!-- end .contents -->
+    </section> <!-- end #rentals -->
+
+<!--
+<div class="form-horizontal" style="width: 600px; margin: auto;">
+    <form id="registration_form" action="" method="post">{% csrf_token %}
+
+        {% with "New Account" as legend %}
+            {% include "form.html" %}
+        {% endwith %}
+
+        <fieldset>
+            <header><h2>Which best describes you?</h2></header>
+            <div class="control-group">
+                {% include 'registration/_custom_default_view_form_field.html' %}
+            </div>
+        </fieldset>
+        <input type="hidden" name="redirect_to" value="{% firstof request.GET.next request.GET.redirect_to redirect_to %}"/>
+        {% comment %}
+        <input type="hidden" name="{{ step_field }}" value="{{ step0 }}" />
+        This was used when we were doing a multi-step registration process.
+        will rip theis out eventually. and what the hell is previous_fields?
+
+        {% endcomment %}
+        {{ previous_fields|safe }}
+        <div class="actions">
+            <input class="btn btn-primary btn-large" type="submit" value="{% if step == 1 %}Next &rarr;{% else %}Sign up!{% endif %}" />
+        </div>
+    </form>
+</div> -->
+{% endblock %}
+
+{% block mixpanel_track %}
+    {% if request.user|is_lazy_user %}
+        mixpanel.track("Registration Started", { distinct_id: "{{ request.user.username }}" });
+    {% else %}
+        mixpanel.track("Registration Started");
+    {% endif %}
+{% endblock %}

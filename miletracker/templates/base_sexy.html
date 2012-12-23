@@ -7,13 +7,13 @@
 {% block content %}
             <div data-role="content" data-theme="c">
                 <h1 id="logo"><span id="mile">mile</span><span id="tracker">tracker</span></h1>
-                {% block actions %}
                 <div id="actions">
+                    {% block actions %}
                     <a href="{% url add %}" data-role="button" data-icon="plus">Start A Trip</a>
                     <!--
                     <a href="{% url edit 2 %}" data-role="button" data-icon="power" data-theme="d">End A Trip</a>
                     -->
+                    {% endblock %}
                 </div>
-                {% endblock %}
             </div><!-- content -->
 {% endblock %}

@@ -1,0 +1,25 @@
+{% with form.fields.default_view as field %}
+        <div id="replacement_default_view" class="hide clearfix{% if field.errors %} error{% endif %}">
+            {% for error in field.errors %}
+                <div class="input"><p style="color:#B94A48;font-weight:bold;">{{ error }}</p></div>
+            {% endfor %}
+            <div class="fancyradio">
+                <div class="label">Applicant</div>
+                <div class="label">Landlord</div>
+                <div class="label">Broker</div>
+                <div class="label">Agency</div>
+            </div>
+
+            <div class="fancyradio">
+                <div class="round_all choice"><img src="{{ MEDIA_URL }}accounts/images/applicant.png" /></div>
+                <div class="round_all choice"><img src="{{ MEDIA_URL }}accounts/images/landlord.png" /></div>
+                <div class="round_all choice"><img src="{{ MEDIA_URL }}accounts/images/broker.png" /></div>
+                <div class="round_all choice"><img src="{{ MEDIA_URL }}accounts/images/agency.png" /></div>
+            </div>
+            <div class="" style="margin-left: 100px;">
+                <span class="help-inline">{{ field.help_text|safe }}</span>
+            </div>
+        </div>
+
+
+{% endwith %}

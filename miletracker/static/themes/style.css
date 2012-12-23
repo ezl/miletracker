@@ -40,12 +40,12 @@ h1#logo, #actions {
     text-align: center;
 }
 h1#logo {
-    top: 30%;
+    top: 25%;
     font-size: 3em;
 }
 
 #actions {
-  top: 60%;
+  top: 50%;
 }
 
 p.helptext {
