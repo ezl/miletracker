@@ -45,12 +45,14 @@
             </div>
             {% endblock %}
 
-            {% block messages%}
-                <div class="messages" data-role="content">
-                {% for message in messages %}
-                    <p class="{{ message.tags }}">{{ message|safe }}</p>
-                {% endfor %}
-                </div>
+            {% block messages %}
+                {% if messages %}
+                    <div class="messages" data-role="content">
+                    {% for message in messages %}
+                        <p class="{{ message.tags }}">{{ message|safe }}</p>
+                    {% endfor %}
+                    </div>
+                {% endif %}
             {% endblock %}
 
             {% block content %}
