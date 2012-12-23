@@ -33,15 +33,15 @@ span#tracker { color: red; }
 
 /* Landing Page Positioning */
 h1#logo, #actions {
-    position:absolute;
-    width: 320px;
-    left:50%;
-    margin-left:-160px;
+    position: absolute;
+    width: 280px;
+    left: 50%;
+    margin-left: -140px;
     text-align: center;
 }
 h1#logo {
     top: 30%;
-    font-size:3em;
+    font-size: 3em;
 }
 
 #actions {
