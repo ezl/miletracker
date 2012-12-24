@@ -24,7 +24,7 @@
 
         <!-- Javascript includes -->
         <script src="{{ STATIC_URL }}javascript/jquery-1.8.2.min.js"></script>
-        <script src="{{ STATIC_URL }}javascript/jquery-ui-1.9.2.custom.js"></script> /* this is just for "shake" on the landing page */
+        <script src="{{ STATIC_URL }}javascript/jquery-ui-1.9.2.custom.js"></script> <!-- this is just for "shake" on the landing page -->
         <script src="{{ STATIC_URL }}javascript/jquery.mobile-1.2.0.min.js"></script>
 
         {% block extra_css %}
@@ -32,6 +32,22 @@
 
         {% block extra_javascript %}
         <script>
+            $('.passwordEntry').hide();
+
+            $('#emailSubmit').live("click", function(event) {
+                $('.emailEntry').hide();
+                $('.passwordEntry').show();
+                $('.widgetContainer').effect("shake", { times:2, distance: 10, direction:"down" }, 500);
+                console.log("submit form");
+                event.preventDefault;
+                return false;
+            });
+            $('#passwordSubmit').live("click", function(event) {
+                $('.passwordEntry').hide();
+                // $('.emailEntry').show();
+                $('.spinner').fadeIn();
+                // $('.widgetContainer').effect("shake", { times:2, distance: 10, direction:"down" }, 500);
+            });
         </script>
         {% endblock %}
     </head>

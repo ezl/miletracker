@@ -55,7 +55,7 @@ display: none;
 
             <div class="emailEntry ui-grid-a">
                     <div class="ui-block-a" style="width:75%">
-                        <input name="email" type="email" data-theme="a" class="leftRound" data-mini="true" placeholder="name@email.com">
+                        <input name="username" type="email" data-theme="a" class="leftRound" data-mini="true" placeholder="name@email.com">
                     </div>
                     <div class="ui-block-b" style="width:25%">
                         <input id="emailSubmit" type="submit" class="rightRound" value="Go!" data-mini="true">
@@ -91,20 +91,5 @@ display: none;
 
     <script>
         $('.passwordEntry').hide();
-
-        $('#emailSubmit').click(function(event) {
-            $('.emailEntry').hide();
-            $('.passwordEntry').show();
-            $('.widgetContainer').effect("shake", { times:2, distance: 10, direction:"down" }, 500);
-            console.log("submit form");
-            event.preventDefault;
-            return false;
-        });
-        $('#passwordSubmit').click(function(event) {
-            $('.passwordEntry').hide();
-            // $('.emailEntry').show();
-            $('.spinner').fadeIn();
-            // $('.widgetContainer').effect("shake", { times:2, distance: 10, direction:"down" }, 500);
-        });
     </script>
 {% endblock %}
