@@ -31,22 +31,6 @@
         {% endblock %}
 
         {% block extra_javascript %}
-        <script>
-            $('#emailSubmit').live("click", function(event) {
-                $('.emailEntry').hide();
-                $('.passwordEntry').show();
-                $('.widgetContainer').effect("shake", { times:2, distance: 10, direction:"down" }, 500);
-                console.log("submit form");
-                event.preventDefault;
-                return false;
-            });
-            $('#passwordSubmit').live("click", function(event) {
-                $('.passwordEntry').hide();
-                // $('.emailEntry').show();
-                $('.spinner').fadeIn();
-                // $('.widgetContainer').effect("shake", { times:2, distance: 10, direction:"down" }, 500);
-            });
-        </script>
         {% endblock %}
     </head>
 

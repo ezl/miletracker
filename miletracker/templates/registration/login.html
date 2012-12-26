@@ -1,6 +1,24 @@
 {% extends "base_sexy.html" %}
 
 {% block actions %}
+        <script>
+            $('#emailSubmit').live("click", function(event) {
+                $('.emailEntry').hide();
+                $('.error').hide();
+                $('.passwordEntry').show();
+                $('.widgetContainer').effect("shake", { times:2, distance: 10, direction:"down" }, 500);
+                console.log("submit form");
+                $('input[type=password]').focus();
+                event.preventDefault;
+                return false;
+            });
+            $('#passwordSubmit').live("click", function(event) {
+                $('.passwordEntry').hide();
+                $('.emailEntry').show();
+                $('.spinner').fadeIn();
+                // $('.widgetContainer').effect("shake", { times:2, distance: 10, direction:"down" }, 500);
+            });
+        </script>
     <style>
         .white {
             color: white !important;
@@ -30,33 +48,42 @@
             margin-left: 0px;
         }
 
-
-
-
-
-#w1progressIndicator {
-width: 13px;
-height: 15px;
-background-image: url('http://launchrock.com/img/ui/saving.gif');
-position: absolute;
-right: 20px;
-top: 19px;
-display: none;
-}
-
-
-
-
+        #w1progressIndicator {
+            width: 13px;
+            height: 15px;
+            background-image: url('http://launchrock.com/img/ui/saving.gif');
+            position: absolute;
+            right: 20px;
+            top: 19px;
+            display: none;
+        }
 
     </style>
 
+    <div style="border:1px solid red; display:none;">
+    cat
+    <form method="post">{% csrf_token %}
     {{ form }}
+    <input type="submit" value="go">
+    </form>
+    dog
+    </div>
+
     <form action="" method="post" id="login-box">{% csrf_token %}
         <div class="widgetContainer">
+            {% if form.errors %}
+            <div class="error leftRound rightRound" style="padding: 5px 10px; height: auto;">
+                <p class="error" style="height: auto;">Oops, we had some trouble logging you in. Could you try again?</p>
+            </div>
+            <script>
+                $('.passwordEntry').show();
+                $('.emailEntry').show();
+            </script>
+            {% endif %}
 
             <div class="emailEntry ui-grid-a">
                     <div class="ui-block-a" style="width:75%">
-                        <input name="username" type="email" data-theme="a" class="leftRound" data-mini="true" placeholder="name@email.com">
+                        <input name="username" type="text" data-theme="a" class="leftRound" data-mini="true" placeholder="name@email.com">
                     </div>
                     <div class="ui-block-b" style="width:25%">
                         <input id="emailSubmit" type="submit" class="rightRound" value="Go!" data-mini="true">
