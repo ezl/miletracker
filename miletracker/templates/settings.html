@@ -21,7 +21,7 @@
                         <p class="helptext {% if field.errors %}error{% endif %}">{{ field.help_text}}</p>
                     </div>
                     {% endfor %}
-                    <a id="submit" data-role="button" data-icon="save" data-theme="c">Save This Trip!</a>
+                    <a id="submit" data-role="button" data-icon="save" data-theme="c">Save</a>
                     <script>
                         $('a#submit').click(function (e) {
                             $(this).parent().submit();
