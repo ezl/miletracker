@@ -59,6 +59,7 @@ def log(request, template_name="log.html"):
     ctx = dict(
         tab="log",
         trips=trips,
+        totalmiles=sum(trip.distance() for trip in trips)
         )
     return render_to_response(
         template_name, RequestContext(request, ctx))
