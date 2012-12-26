@@ -69,7 +69,7 @@
     dog
     </div>
 
-    <form action="" method="post" id="login-box">{% csrf_token %}
+    <form action="" method="post" id="login-box" data-ajax="false">{% csrf_token %}
         <div class="widgetContainer">
             {% if form.errors %}
             <div class="error leftRound rightRound" style="padding: 5px 10px; height: auto;">
