@@ -9,7 +9,7 @@ from django.contrib.auth.views import login as auth_login
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 
 def settings(request, template_name="settings.html"):
-    ctx = dict()
+    ctx = dict(tab="settings")
     return render_to_response(
         template_name, RequestContext(request, ctx))
 
