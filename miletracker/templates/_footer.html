@@ -3,7 +3,7 @@
                     <ul>
                         <li><a href="{% url add %}" data-icon="plus" {% if tab == "edit" %}class="ui-btn-active ui-state-persist"{% endif %}>New Trip</a></li>
                         <li><a href="{% url log %}" data-icon="page" {% if tab == "log" %}class="ui-btn-active ui-state-persist"{% endif %}>View Trips</a></li>
-                        <li><a href="{% url login %}" data-icon="wrench" {% if tab == "settings" %}class="ui-btn-active ui-state-persist"{% endif %}>Settings</a></li>
+                        <li><a href="{% url settings %}" data-icon="wrench" {% if tab == "settings" %}class="ui-btn-active ui-state-persist"{% endif %}>Settings</a></li>
                     </ul>
                 </div><!-- /navbar -->
             </div><!-- /footer -->

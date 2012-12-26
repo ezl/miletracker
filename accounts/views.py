@@ -8,6 +8,11 @@ from django.core.urlresolvers import reverse
 from django.contrib.auth.views import login as auth_login
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 
+def settings(request, template_name="settings.html"):
+    ctx = dict()
+    return render_to_response(
+        template_name, RequestContext(request, ctx))
+
 def login(request, template_name="registration/login.html"):
     form = AuthenticationForm()
     if request.method == "POST":
