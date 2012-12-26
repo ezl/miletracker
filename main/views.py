@@ -10,11 +10,6 @@ from django.contrib import messages
 from django.core.urlresolvers import reverse
 
 
-def settings(request, template_name="settings.html"):
-    ctx = dict(tab="settings")
-    return render_to_response(
-        template_name, RequestContext(request, ctx))
-
 def edit(request, trip_id=None, template_name="edit.html"):
     trip = None
     if trip_id:
