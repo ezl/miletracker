@@ -2,7 +2,9 @@
 
 {% block content %}
             <div data-role="content" data-theme="a">
+                {% if trips %}
                 <input type="search" name="search" id="search-basic" value="" placeholder="Search for a trip (this doesn't work yet)" />
+                {% endif %}
 
 {% comment %}
                 <div data-role="navbar">
@@ -13,13 +15,17 @@
                 </div><!-- /navbar -->
 {% endcomment %}
 
-                <h2>Trip Log<span class="right">74.2 mi</span></h2>
+                <h2>Trip Log<span class="right">{% if trips %}74.2 mi{% endif %}</span></h2>
                     <ul id="mylistview"
                         data-role="listview"
                         >
                         {% for trip in trips %}
                         <li data-icon="pencil"><a href="{% url edit trip.id %}">{{ trip.date}} - {% firstof trip.reason "(no description)"%}</a><span class="ui-li-count">{{ trip.distance }} mi</span></li>
-                        {% endfor %}
+                        {% empty %}
+
+                        <li>No trips logged yet.</li>
+
+                        <!--
 
                         <li data-icon="pencil"><a href="">Nov 03 - Real estate showing</a><span class="ui-li-count">2.4 mi</span></li>
                         <li data-icon="pencil"><a href="">Nov 08 - Real estate showing</a><span class="ui-li-count">18 mi</span></li>
@@ -27,9 +33,16 @@
                         <li data-icon="pencil"><a href="">Jul 08 - Real estate showing</a><span class="ui-li-count">5 mi</span></li>
                         <li data-icon="pencil"><a href="">Sep 12 - Office Max run</a><span class="ui-li-count">3 mi</span></li>
                         <li data-icon="pencil"><a href="">May 23 - Real estate showing</a><span class="ui-li-count">21.2 mi</span></li>
+
+                        -->
+                        {% endfor %}
                     </ul>
 
                 <br><br>
+                {% if trips %}
                 <a href="{% url email %}" data-rel="dialog" data-role="button" data-icon="save" data-theme="c">Email</a>
+                {% else %}
+                <a href="{% url add %}" data-rel="dialog" data-role="button" data-icon="plus" data-theme="c">Add Your First Trip</a>
+                {% endif %}
             </div><!-- content -->
 {% endblock %}

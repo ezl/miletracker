@@ -4,7 +4,7 @@ from django import forms
 class TripForm(forms.ModelForm):
     class Meta:
         model = Trip
-        exclude = ('notes',)
+        exclude = ('notes', 'user',)
 
     def __init__(self, *args, **kwargs):
         super(TripForm, self).__init__(*args, **kwargs)

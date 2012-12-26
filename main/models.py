@@ -2,10 +2,12 @@ from django.db import models
 from django_extensions.db.models import TimeStampedModel
 from django.core.urlresolvers import reverse
 from django.core.exceptions import ValidationError
+from django.contrib.auth.models import User
 
 # Create your models here.
 
 class Trip(TimeStampedModel):
+    user = models.ForeignKey(User)
     date = models.DateField(blank=True, null=True,
                help_text="Defaults to today's date.")
     odometer_start = models.FloatField(null=True, blank=True,

@@ -32,7 +32,9 @@ def edit(request, trip_id=None, template_name="edit.html"):
     if request.method == "POST":
         form = TripForm(request.POST, instance=trip)
         if form.is_valid():
-            form.save()
+            trip = form.save(commit=False)
+            trip.user = request.user
+            trip.save()
             messages.success(request, u"Saved!")
             return HttpResponseRedirect(reverse("log"))
         else:
@@ -48,7 +50,12 @@ def edit(request, trip_id=None, template_name="edit.html"):
         template_name, RequestContext(request, ctx))
 
 def log(request, template_name="log.html"):
-    trips = Trip.objects.all()
+    try:
+        trips = Trip.objects.filter(user=request.user)
+    except Exception, e:
+        print e
+        import pdb; pdb.set_trace()
+
     ctx = dict(
         tab="log",
         trips=trips,
