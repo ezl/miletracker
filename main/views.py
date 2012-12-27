@@ -8,8 +8,10 @@ from models import Trip
 from forms import TripForm
 from django.contrib import messages
 from django.core.urlresolvers import reverse
+from django.contrib.auth.decorators import login_required
 
 
+@login_required
 def edit(request, trip_id=None, template_name="edit.html"):
     trip = None
     if trip_id:
@@ -44,6 +46,7 @@ def edit(request, trip_id=None, template_name="edit.html"):
     return render_to_response(
         template_name, RequestContext(request, ctx))
 
+@login_required
 def log(request, template_name="log.html"):
     try:
         trips = Trip.objects.filter(user=request.user)
@@ -59,6 +62,7 @@ def log(request, template_name="log.html"):
     return render_to_response(
         template_name, RequestContext(request, ctx))
 
+@login_required
 def email(request, template_name="email.html"):
     ctx = dict()
     if request.method == "POST":

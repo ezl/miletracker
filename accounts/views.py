@@ -4,12 +4,14 @@ from django.shortcuts import render_to_response
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth.models import User
 from django.core.urlresolvers import reverse
+from django.contrib.auth.decorators import login_required
 
 from django.contrib.auth.views import login as auth_login
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from models import UserProfile
 from forms import UserProfileForm
 
+@login_required
 def settings(request, template_name="settings.html"):
     formclass = UserProfileForm
     userprofile, created = UserProfile.objects.get_or_create(user=request.user)

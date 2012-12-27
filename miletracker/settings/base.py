@@ -80,8 +80,8 @@ if not os.path.exists(VAR_ROOT):
 
 ROOT_URLCONF = 'miletracker.urls'
 
-LOGIN_URL = '/login/'
-LOGOUT_URL = '/logout/'
+LOGIN_URL = '/accounts/login/'
+LOGOUT_URL = '/accounts/logout/'
 LOGIN_REDIRECT_URL = '/'
 
 STATIC_URL = '/static/'

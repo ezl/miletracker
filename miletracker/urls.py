@@ -1,5 +1,6 @@
 from django.conf.urls.static import static
 from django.conf import settings
+from django.contrib.auth.decorators import login_required
 from django.conf.urls.defaults import patterns, url, include
 
 from django.views.generic.simple import direct_to_template
@@ -15,7 +16,7 @@ urlpatterns = patterns('',
     (r'^accounts/', include('accounts.urls')),
 
     url(r'^$',
-        direct_to_template, {
+        login_required(direct_to_template), {
             'template': 'landing.html',
             'extra_context': {},
         }, name='landing'),
