@@ -30,6 +30,7 @@ SECRET_KEY = 'x6-n$%9nmubea&amp;-#vjky9m1#9-vfik9qs@3(sr=t@3f$y8__r$'
 INSTALLED_APPS = (
     # 'miletracker.apps.',
     'main',
+    'accounts',
 
     #'south',
     'django_extensions',
@@ -102,6 +103,7 @@ TEMPLATE_DIRS = (
 )
 
 TEMPLATE_CONTEXT_PROCESSORS += (
+    'django.core.context_processors.request',
 )
 
 #==============================================================================
