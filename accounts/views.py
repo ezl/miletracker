@@ -7,9 +7,29 @@ from django.core.urlresolvers import reverse
 
 from django.contrib.auth.views import login as auth_login
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
+from models import UserProfile
+from forms import UserProfileForm
 
 def settings(request, template_name="settings.html"):
-    ctx = dict(tab="settings")
+    formclass = UserProfileForm
+    userprofile, created = UserProfile.objects.get_or_create(user=request.user)
+    if request.method == "GET":
+        form = formclass(instance=userprofile)
+    if request.method == "POST":
+        # import pdb; pdb.set_trace()
+        form = formclass(request.POST, instance=userprofile)
+        if form.is_valid():
+            userprofile = form.save(commit=False)
+            userprofile.user = request.user
+            userprofile.save()
+            messages.success(request, "Your settings were successfully saved.")
+        else:
+            messages.error(request, "Error.")
+
+    ctx = dict(
+        tab="settings",
+        form=form,
+        )
     return render_to_response(
         template_name, RequestContext(request, ctx))
 

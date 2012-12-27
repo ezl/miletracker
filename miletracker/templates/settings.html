@@ -2,7 +2,7 @@
 
 {% block content %}
             <div data-role="content" data-theme="a">
-                    <h2>Settings</h2>
+                <h2>{{ request.user.username|capfirst }}'s Settings</h2>
                 <form method="POST">{% csrf_token %}
                     {% if form.non_field_errors %}
                     <div class="error">
@@ -17,6 +17,7 @@
                         {% if field.errors %}
                             <p class="error" style="display:block">{{ field.errors.0 }}</p>
                         {% endif %}
+                        {{ field.label_tag }}
                         {{ field }}
                         <p class="helptext {% if field.errors %}error{% endif %}">{{ field.help_text}}</p>
                     </div>
