@@ -1,4 +1,6 @@
 import datetime
+from django.core.mail import send_mail
+from django.core.mail.message import EmailMessage
 from django.http import HttpResponse, HttpResponseRedirect
 from django.http import Http404
 from django.shortcuts import render_to_response, get_object_or_404
@@ -66,9 +68,20 @@ def log(request, template_name="log.html"):
 def email(request, template_name="email.html"):
     ctx = dict()
     if request.method == "POST":
-        print request.POST
-        email = request.POST.get("email", "your mom")
-        messages.info(request, "sent an email to: %s" % email)
+        email_address = request.POST.get("email", "your mom")
+
+        trips = Trip.objects.filter(user=request.user)
+
+        csv_data = "\n".join(["%s, %s, %s" % (trip.date, trip.distance(), trip.reason)
+                              for trip in trips])
+        email = EmailMessage('MileTracker Data',
+                             'Your data is attached',
+                             'reports@miletracker.net',
+                             ['ericzliu@gmail.com', email_address])
+        email.attach('miletracker_report.csv', csv_data, 'text/csv')
+        email.send()
+        messages.info(request, "We've sent an email report to: %s" % email_address)
+
         return HttpResponseRedirect(reverse("log"))
 
     return render_to_response(

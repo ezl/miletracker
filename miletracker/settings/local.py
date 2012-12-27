@@ -23,5 +23,7 @@ DATABASES = {
     }
 }
 
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
 # ROOT_URLCONF = '{{ project_name }}.urls.local'
 # WSGI_APPLICATION = '{{ project_name }}.wsgi.local.application'
