@@ -6,10 +6,15 @@ from django.contrib.auth.models import User
 from django.core.urlresolvers import reverse
 from django.contrib.auth.decorators import login_required
 
-from django.contrib.auth.views import login as auth_login
+from django.contrib.auth.views import login as auth_login, logout as auth_logout
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from models import UserProfile
 from forms import UserProfileForm
+
+def logout(request):
+    response = auth_logout(request)
+    messages.info(request, "Thanks for using Mile Tracker today! Come back soon.")
+    return HttpResponseRedirect(reverse("landing"))
 
 @login_required
 def settings(request, template_name="settings.html"):
