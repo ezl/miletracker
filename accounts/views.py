@@ -82,12 +82,14 @@ def login(request, template_name="registration/login.html"):
         else:
             print "invalid login form"
             print "hi"
+            form = AuthenticationForm(data=request.POST)
+            form.is_valid() # just doing this to get the errors to trigger
             # import pdb; pdb.set_trace()
 
     # form = AuthenticationForm()
     ctx = dict(form=form)
     print form.errors
-    if form.errors:
-        messages.error(request, "Oops, we had a problem logging you in. Can you try again?")
+    # if form.errors:
+    #     messages.error(request, "Oops, we had a problem logging you in. Can you try again?")
     return render_to_response(
         template_name, RequestContext(request, ctx))
