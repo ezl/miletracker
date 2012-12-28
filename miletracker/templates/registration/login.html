@@ -69,6 +69,10 @@
     dog
     </div>
 
+    <div class="emailEntry" style="font-size:1.25em;">
+        <p class="helptext white">Enter your email to Join or Log in.</p>
+    </div>
+
     <form action="" method="post" id="login-box" data-ajax="false">{% csrf_token %}
         <div class="widgetContainer">
             {% if form.errors %}
@@ -107,10 +111,6 @@
     </form>
 
     <br>
-
-    <div class="emailEntry">
-        <p class="helptext white">Enter your email to Join or Log in.</p><br />
-    </div>
 
     <div class="passwordEntry">
         <p class="helptext white" style="margin-bottom: 0.5px;"><a>Forgot password?</a></p>
