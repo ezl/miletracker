@@ -9,16 +9,12 @@ from django.contrib.auth.models import User
 class Trip(TimeStampedModel):
     user = models.ForeignKey(User)
     date = models.DateField(blank=True, null=True,
-               help_text="Defaults to today's date.")
-    odometer_start = models.FloatField(null=True, blank=True)
-    odometer_end = models.FloatField(null=True, blank=True,
-        help_text=("If you're just starting your trip, you can "
-                   "fill this in later, when the trip actually ends."))
-    reason = models.CharField(max_length=1000, null=True, blank=True,
-        help_text=("Optional. You can also fill it in later "
-                   "if you want."))
-    notes = models.TextField(null=True, blank=True,
-        help_text="Optional.")
+               help_text="")
+    odometer_start = models.FloatField(null=True, blank=True,
+        help_text=(""))
+    odometer_end = models.FloatField(null=True, blank=True)
+    reason = models.CharField(max_length=1000, null=True, blank=True)
+    notes = models.TextField(null=True, blank=True)
 
     def distance(self):
         start = self.odometer_start or 0
