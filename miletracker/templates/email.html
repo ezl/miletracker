@@ -4,7 +4,7 @@
 <div data-role="content" data-theme="a">
     <h2>Where should we send it?</h2>
     <form method="POST">{% csrf_token %}
-        <input id="email" name="email" type="email" placeholder="null@example.com">
+        <input id="email" name="email" type="email" value="{{ request.user.username }}" placeholder="null@example.com">
         <p class="helptext ">Email address to mail report to</p>
 
         <a id="submit" data-role="button" data-icon="share-alt" data-theme="c">Send!</a>
