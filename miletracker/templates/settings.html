@@ -2,6 +2,9 @@
 
 {% block content %}
             <div data-role="content" data-theme="a">
+                <div class="right">
+                    <a href="{% url logout %}" style="text-decoration:none;">Log out</a>
+                </div>
                 <h2>{{ request.user.username|capfirst }}'s Settings</h2>
                 <form method="POST">{% csrf_token %}
                     {% if form.non_field_errors %}
