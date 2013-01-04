@@ -20,7 +20,7 @@ class TripForm(forms.ModelForm):
         self.fields['reason'].widget.attrs['data-mini'] = "true"
 
         self.fields['date'].widget.input_type = "date"
-        self.fields['odometer_start'].widget.input_type = "number"
-        self.fields['odometer_end'].widget.input_type = "number"
+        self.fields['odometer_start'].widget.input_type = "tel"
+        self.fields['odometer_end'].widget.input_type = "tel"
         self.fields['reason'].widget.input_type = "text"
 

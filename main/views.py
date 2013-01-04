@@ -72,7 +72,11 @@ def email(request, template_name="email.html"):
 
         trips = Trip.objects.filter(user=request.user)
 
-        csv_data = "\n".join(["%s, %s, %s" % (trip.date, trip.distance(), trip.reason)
+        csv_data = "\n".join(["%s, %s, %s %s, %s" % (trip.date,
+                                                     trip.odometer_start,
+                                                     trip.odometer_end,
+                                                     trip.distance(),
+                                                     trip.reason)
                               for trip in trips])
         email = EmailMessage('MileTracker Data',
                              'Your data is attached',
